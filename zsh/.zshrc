@@ -82,14 +82,14 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git textmate)
+plugins=(git textmate fzf-tab zsh-syntax-highlighting zsh-autosuggestions)
 
 # plugins=(git fzf-zsh-plugin zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# zsh-autosuggestions now loaded via oh-my-zsh plugins
+# zsh-autocomplete removed in favour of fzf-tab
 
 # User configuration
 
