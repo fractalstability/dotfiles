@@ -93,9 +93,9 @@ require_repo = true
 ignore_timeout = true
 
 [git_branch]
-symbol = "[\\](base) "
+symbol = " "
 style = "fg:lavender bg:base"
-format = " [$symbol$branch]($style)[\\](base)"
+format = " [$symbol$branch ]($style)"
 
 # [git_status]
 # MINIMAL git status
