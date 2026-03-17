@@ -40,11 +40,17 @@ truncation_length = 4
 "Others" = " "
 
 [username]
-disabled = true
+disabled = false
 show_always = true
-style_user = "bg:surface0 fg:text"
-style_root = "bg:surface0 fg:text"
-format = " $user "
+style_user = "fg:subtext1"
+style_root = "fg:red"
+format = "[$user]($style)@"
+
+
+[hostname]
+ssh_only = false
+style = "fg:subtext1"
+format = "[$hostname ]($style)"
 
 [line_break]
 disabled = true
@@ -59,9 +65,10 @@ vimcmd_symbol = "[: ](bold fg:yellow)"
 disabled = false
 
 [time]
-disabled = true
+disabled = false
 time_format = "%R"
-format = "[[  $time ](fg:yellow bg:foam)]($style)"
+format = "[ $time ]($style)"
+style = "fg:yellow"
 
 [custom.giturl]
 description = "Display symbol for remote Git server"
