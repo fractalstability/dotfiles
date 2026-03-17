@@ -172,6 +172,7 @@ bindkey '^e' edit-command-line
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=3"
 
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/4.0.0/bin:$PATH"
 
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
 export FZF_PREVIEW_ADVANCED=true
