@@ -115,7 +115,7 @@ untracked = "[?${count} ](sapphire)"
 stashed = "[≡${count} ](lavender)"
 conflicted = "[ⓖ${count} ](red bold)"
 
-ahead = "X⇡${count} ](teal)"
+ahead = "[⇡${count} ](teal)"
 behind = "[⇣${count} ](peach)"
 diverged = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
 
