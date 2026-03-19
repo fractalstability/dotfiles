@@ -124,7 +124,7 @@ alias vim="nvim"
 alias vi="vim"
 
 # WhatsApp MCP bridge
-alias whatsapp-bridge="/Users/coopmans/code/whatsapp-mcp/whatsapp-bridge/whatsapp-client"
+alias whatsapp-bridge="$HOME/code/whatsapp-mcp/whatsapp-bridge/whatsapp-client"
 
 
 export KEYTIMEOUT=10
@@ -179,7 +179,7 @@ export FZF_PREVIEW_ADVANCED=true
 
 # autoload -U +X bashcompinit && bashcompinit
 # Created by `pipx` on 2024-05-19 15:34:21
-export PATH="$PATH:/Users/coopmans/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
 eval "$(pyenv init --path)"
@@ -188,21 +188,21 @@ eval "$(pyenv init -)"
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
 export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
-PATH="/Users/coopmans/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/coopmans/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/coopmans/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/coopmans/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/coopmans/perl5"; export PERL_MM_OPT;
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 # Added by Antigravity
-export PATH="/Users/coopmans/.antigravity/antigravity/bin:$PATH"
-export PATH="/Users/coopmans/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/coopmans/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/coopmans/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/coopmans/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/coopmans/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Starship prompt
 eval "$(starship init zsh)"
