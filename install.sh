@@ -106,9 +106,34 @@ fi
 
 # ─── Aider ────────────────────────────────────────────────────────
 
-if ! command -v aider &>/dev/null; then
-  warn "Aider not installed — run: pip install aider-chat --break-system-packages"
+AIDER_VENV="$HOME/.aider-venv"
+if [ ! -f "$AIDER_VENV/bin/aider" ]; then
+  info "Installing aider into dedicated venv at ${AIDER_VENV}..."
+  # Find a suitable Python 3 (prefer pyenv/rye-managed, fall back to system)
+  PYTHON3=$(command -v python3 || true)
+  if [ -x "$HOME/.rye/py/cpython@3.12.4/bin/python3" ]; then
+    PYTHON3="$HOME/.rye/py/cpython@3.12.4/bin/python3"
+  elif command -v pyenv &>/dev/null; then
+    PYTHON3="$(pyenv which python3 2>/dev/null || echo "$PYTHON3")"
+  fi
+  if [ -z "$PYTHON3" ]; then
+    warn "No Python 3 found — install Python then re-run install.sh"
+  else
+    "$PYTHON3" -m venv "$AIDER_VENV"
+    "$AIDER_VENV/bin/pip" install --quiet aider-chat
+    ok "Aider installed → $AIDER_VENV"
+  fi
+else
+  ok "Aider venv already present at $AIDER_VENV"
 fi
+
+# ─── Cowork ───────────────────────────────────────────────────────
+info "Setting up cowork scripts..."
+mkdir -p "$HOME/.cowork"
+link_file "$DOTFILES/cowork/.cowork/run.sh"     "$HOME/.cowork/run.sh"
+link_file "$DOTFILES/cowork/.cowork/run_b64.sh" "$HOME/.cowork/run_b64.sh"
+touch "$HOME/.cowork/session.log"
+ok "~/.cowork scripts linked (session.log created)"
 
 # ─── Summary ──────────────────────────────────────────────────────
 
