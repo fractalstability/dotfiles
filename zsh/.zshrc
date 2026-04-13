@@ -219,3 +219,28 @@ export PATH="$HOME/.opencode/bin:$PATH"
 
 # Source private env (API keys, host-specific vars) — not checked into public dotfiles
 [ -f "$HOME/.dotfiles-env" ] && source "$HOME/.dotfiles-env"
+
+# ─── LiteLLM / OpenCode helpers ──────────────────────────────────
+
+# Quick launch — just type: oc [dir]
+oc() { cd "${1:-.}" && opencode; }
+
+# Health check — run when something feels broken
+litellm-check() {
+  local base="${LITELLM_BASE:-http://localhost:4000}"
+  local key="${LITELLM_API_KEY:-}"
+  [ -z "$key" ] && echo "LITELLM_API_KEY not set — check ~/.dotfiles-env" && return 1
+
+  echo "Checking $base ..."
+  local status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 4 \
+    -H "Authorization: Bearer $key" "$base/v1/models")
+  [[ "$status" =~ ^2 ]] && echo "✔ LiteLLM reachable ($status)" || { echo "✘ NOT reachable ($status)"; return 1; }
+
+  echo "\nAvailable models:"
+  curl -sf --max-time 6 -H "Authorization: Bearer $key" "$base/v1/models" \
+    | python3 -c "
+import sys, json
+for m in sorted(m['id'] for m in json.load(sys.stdin).get('data', [])):
+    print(f'  • {m}')
+" 2>/dev/null || echo "  (could not parse model list)"
+}

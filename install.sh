@@ -55,9 +55,6 @@ link_file "$DOTFILES/starship/.config/starship/starship.toml" "$HOME/.config/sta
 # CONVENTIONS.md
 link_file "$DOTFILES/dev/dev/CONVENTIONS.md" "$HOME/dev/CONVENTIONS.md"
 
-# start-agent.sh
-link_file "$DOTFILES/scripts/scripts/start-agent.sh" "$HOME/scripts/start-agent.sh"
-
 # ─── Private repo ─────────────────────────────────────────────────
 
 if [ -d "$PRIVATE" ]; then
@@ -108,7 +105,7 @@ fi
 
 echo ""
 info "Done! Summary:"
-echo "  Public:  zsh, starship, CONVENTIONS.md, start-agent.sh"
+echo "  Public:  zsh, starship, CONVENTIONS.md"
 if [ -d "$PRIVATE" ]; then
   echo "  Private: .dotfiles-env → API keys + host config"
 fi
