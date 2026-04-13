@@ -1,0 +1,14 @@
+# Never commit secrets
+.dotfiles-env
+*.env
+
+# Generated from template — host-specific
+opencode/.config/opencode/opencode.json
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~

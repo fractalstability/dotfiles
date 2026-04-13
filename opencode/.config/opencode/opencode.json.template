@@ -1,0 +1,52 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "litellm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LiteLLM @ Homelab",
+      "options": {
+        "baseURL": "__LITELLM_BASE__/v1",
+        "apiKey": "__LITELLM_API_KEY__"
+      },
+      "models": {
+        "qwen-local": {
+          "name": "Qwen Local (Ollama)",
+          "limit": { "context": 8192, "output": 4096 }
+        },
+        "qwen-72b": {
+          "name": "Qwen 72B",
+          "limit": { "context": 130000, "output": 8192 }
+        },
+        "llama-local": {
+          "name": "Llama Local (Ollama)",
+          "limit": { "context": 8192, "output": 4096 }
+        },
+        "gemma4-local": {
+          "name": "Gemma4 Local (Ollama)",
+          "limit": { "context": 8192, "output": 4096 }
+        },
+        "gemma4-31b": {
+          "name": "Gemma4 31B",
+          "limit": { "context": 8192, "output": 4096 }
+        },
+        "glm-5": {
+          "name": "GLM-5",
+          "limit": { "context": 203000, "output": 8192 }
+        },
+        "nemotron-super": {
+          "name": "Nemotron Super",
+          "limit": { "context": 128000, "output": 8192 }
+        },
+        "mistral-7b": {
+          "name": "Mistral 7B",
+          "limit": { "context": 32768, "output": 4096 }
+        }
+      }
+    }
+  },
+  "model": "litellm/qwen-local",
+  "autoshare": false,
+  "instructions": [
+    "__HOME__/dev/CONVENTIONS.md"
+  ]
+}

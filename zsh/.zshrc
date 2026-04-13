@@ -206,3 +206,16 @@ if [ -f '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/D
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
+
+# Source private env (API keys, host-specific vars) — not checked into public dotfiles
+[ -f "$HOME/.dotfiles-env" ] && source "$HOME/.dotfiles-env"
