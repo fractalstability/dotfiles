@@ -180,10 +180,13 @@ export FZF_PREVIEW_ADVANCED=true
 # autoload -U +X bashcompinit && bashcompinit
 # Created by `pipx` on 2024-05-19 15:34:21
 export PATH="$PATH:$HOME/.local/bin"
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+# pyenv — active on gluon (Python 3.9.4); muon uses rye instead
+if [[ "$(hostname -s)" == "gluon" ]]; then
+  export PYENV_ROOT=$HOME/.pyenv
+  export PATH=$PYENV_ROOT/bin:$PATH
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+fi
 
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
@@ -217,6 +220,13 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
 
+# rye (muon) — guard against stray Python 2.7 pip
+if [[ -d "$HOME/.rye" ]]; then
+  # rye manages python/python3; add a pip alias pointing to the right python
+  alias pip='python -m pip'
+  alias pip3='python3 -m pip'
+fi
+
 # Source private env (API keys, host-specific vars) — not checked into public dotfiles
 [ -f "$HOME/.dotfiles-env" ] && source "$HOME/.dotfiles-env"
 
@@ -247,4 +257,5 @@ for m in sorted(m['id'] for m in json.load(sys.stdin).get('data', [])):
 
 # Aider — launch with: ai [dir]
 # Switch models on the fly: ai --model openai/llama-local ~/code/myproject
-ai() { cd "${1:-.}" && aider; }
+ai() { cd "${1:-.}" && ~/.aider-venv/bin/aider; }
+
