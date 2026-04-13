@@ -244,3 +244,7 @@ for m in sorted(m['id'] for m in json.load(sys.stdin).get('data', [])):
     print(f'  • {m}')
 " 2>/dev/null || echo "  (could not parse model list)"
 }
+
+# Aider — launch with: ai [dir]
+# Switch models on the fly: ai --model openai/llama-local ~/code/myproject
+ai() { cd "${1:-.}" && aider; }

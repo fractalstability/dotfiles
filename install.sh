@@ -55,6 +55,9 @@ link_file "$DOTFILES/starship/.config/starship/starship.toml" "$HOME/.config/sta
 # CONVENTIONS.md
 link_file "$DOTFILES/dev/dev/CONVENTIONS.md" "$HOME/dev/CONVENTIONS.md"
 
+# aider
+link_file "$DOTFILES/aider/.aider.conf.yml" "$HOME/.aider.conf.yml"
+
 # ─── Private repo ─────────────────────────────────────────────────
 
 if [ -d "$PRIVATE" ]; then
@@ -101,11 +104,17 @@ if [ ! -f "$HOME/.opencode/bin/opencode" ]; then
   warn "OpenCode not installed — run: curl -fsSL https://opencode.ai/install | bash"
 fi
 
+# ─── Aider ────────────────────────────────────────────────────────
+
+if ! command -v aider &>/dev/null; then
+  warn "Aider not installed — run: pip install aider-chat --break-system-packages"
+fi
+
 # ─── Summary ──────────────────────────────────────────────────────
 
 echo ""
 info "Done! Summary:"
-echo "  Public:  zsh, starship, CONVENTIONS.md"
+echo "  Public:  zsh, starship, CONVENTIONS.md, aider config"
 if [ -d "$PRIVATE" ]; then
   echo "  Private: .dotfiles-env → API keys + host config"
 fi

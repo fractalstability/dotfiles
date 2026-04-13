@@ -1,0 +1,16 @@
+# Aider global config — symlinked to ~/.aider.conf.yml
+# API base URL and key come from env vars (OPENAI_API_BASE, OPENAI_API_KEY)
+# set in ~/.dotfiles-env
+
+# Default to local qwen via LiteLLM (free, offline)
+model: openai/qwen-local
+
+# Editor behavior
+auto-commits: false
+dark-mode: true
+stream: true
+pretty: true
+
+# Load CONVENTIONS.md as read-only context on every session
+read:
+  - ~/dev/CONVENTIONS.md
