@@ -44,7 +44,7 @@
       }
     }
   },
-  "model": "litellm/qwen-local",
+  "model": "qwen-local",
   "autoshare": false,
   "instructions": [
     "__HOME__/dev/CONVENTIONS.md"
